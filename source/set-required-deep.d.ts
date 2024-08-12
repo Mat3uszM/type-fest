@@ -36,9 +36,7 @@ type SomeRequiredDeep = SetRequiredDeep<Foo, 'a' | 'cb'>;
 @category Object
 */
 export type SetRequiredDeep<BaseType, KeyPaths extends Paths<BaseType>> =
-	// `extends unknown` is always going to be the case and is used to convert any
-	// union into a [distributive conditional
-	// type](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-2-8.html#distributive-conditional-types).
+	// `extends unknown` is always going to be the case and is used to convert any union into a [distributive conditional type](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-2-8.html#distributive-conditional-types).
 	BaseType extends unknown
 		? SimplifyDeep<
 		// Pick just the keys that are optional from the base type.
