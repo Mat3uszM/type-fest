@@ -16,3 +16,7 @@ expectType<{a: number; b?: {c?: string}}>(variation3);
 // Update optional keys to required in a union.
 declare const variation4: SetRequiredDeep<{a?: '1'; b?: {c?: boolean}} | {a?: '2'; b?: {c?: boolean}}, 'a' | 'b.c'>;
 expectType<{a: '1'; b: {c: boolean}} | {a: '2'; b: {c: boolean}}>(variation4);
+
+// Set key inside array to required
+declare const variation5: SetRequiredDeep<{a?: number; array?: Array<{b?: number}>}, 'array'>;
+expectType<{a?: number; array: Array<{b: number}>}>(variation5);

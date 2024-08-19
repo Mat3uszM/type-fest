@@ -16,20 +16,18 @@ import type {SetRequiredDeep} from 'type-fest';
 type Foo = {
 	a?: number;
 	b?: string;
-	c?: {
-    ca?: number
-    cb?: boolean
-  }
+	array?: {
+		c?: number
+	}[]
 }
 
-type SomeRequiredDeep = SetRequiredDeep<Foo, 'a' | 'cb'>;
+type SomeRequiredDeep = SetRequiredDeep<Foo, 'a' | 'array.c'>;
 // type SomeRequiredDeep = {
 // 	a: number; // Is now required
 // 	b?: string;
-// 	c: {
-//    ca?: number
-//    cb: boolean // Is now required
-//  }
+// 	array: {
+//    c: number // Is now required
+//  }[]
 // }
 ```
 
